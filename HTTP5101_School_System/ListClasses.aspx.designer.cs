@@ -10,16 +10,16 @@
 namespace HTTP5101_School_System {
     
     
-    public partial class ListTeachers {
+    public partial class ListClasses {
         
         /// <summary>
-        /// teacher_search control.
+        /// class_search control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox teacher_search;
+        protected global::System.Web.UI.WebControls.TextBox class_search;
         
         /// <summary>
         /// sql_debugger control.
@@ -31,12 +31,12 @@ namespace HTTP5101_School_System {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl sql_debugger;
         
         /// <summary>
-        /// teachers_result control.
+        /// classes_result control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl teachers_result;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl classes_result;
     }
 }

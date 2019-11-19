@@ -10,33 +10,42 @@
 namespace HTTP5101_School_System {
     
     
-    public partial class ListTeachers {
+    public partial class NewTeacher {
         
         /// <summary>
-        /// teacher_search control.
+        /// teacher_fname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox teacher_search;
+        protected global::System.Web.UI.WebControls.TextBox teacher_fname;
         
         /// <summary>
-        /// sql_debugger control.
+        /// teacher_lname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sql_debugger;
+        protected global::System.Web.UI.WebControls.TextBox teacher_lname;
         
         /// <summary>
-        /// teachers_result control.
+        /// teacher_number control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl teachers_result;
+        protected global::System.Web.UI.WebControls.TextBox teacher_number;
+        
+        /// <summary>
+        /// teacher_salary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox teacher_salary;
     }
 }

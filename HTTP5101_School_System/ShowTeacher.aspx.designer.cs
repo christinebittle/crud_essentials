@@ -10,78 +10,78 @@
 namespace HTTP5101_School_System {
     
     
-    public partial class ShowStudent {
+    public partial class ShowTeacher {
         
         /// <summary>
-        /// student control.
+        /// teacher control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl student;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl teacher;
         
         /// <summary>
-        /// student_title_fname control.
+        /// teacher_title_fname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl student_title_fname;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl teacher_title_fname;
         
         /// <summary>
-        /// student_fname control.
+        /// teacher_fname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl student_fname;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl teacher_fname;
         
         /// <summary>
-        /// student_lname control.
+        /// teacher_lname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl student_lname;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl teacher_lname;
         
         /// <summary>
-        /// student_number control.
+        /// teacher_employee_number control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl student_number;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl teacher_employee_number;
         
         /// <summary>
-        /// enrolment_date control.
+        /// teacher_hire_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl enrolment_date;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl teacher_hire_date;
         
         /// <summary>
-        /// student_classes control.
+        /// teacher_salary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl student_classes;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl teacher_salary;
         
         /// <summary>
-        /// student_classid control.
+        /// teacher_classes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList student_classid;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl teacher_classes;
     }
 }

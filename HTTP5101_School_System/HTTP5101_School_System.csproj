@@ -129,6 +129,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="FeaturedClasses.ascx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -141,8 +142,12 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Layout.Master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="ListClasses.aspx" />
     <Content Include="ListStudents.aspx" />
     <Content Include="ListTeachers.aspx" />
+    <Content Include="NewClass.aspx" />
+    <Content Include="NewStudent.aspx" />
+    <Content Include="NewTeacher.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -171,13 +176,25 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="ShowClass.aspx" />
     <Content Include="ShowStudent.aspx" />
+    <Content Include="ShowTeacher.aspx" />
+    <Content Include="UpdateClass.aspx" />
+    <Content Include="UpdateStudent.aspx" />
+    <Content Include="UpdateTeacher.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="FeaturedClasses.ascx.cs">
+      <DependentUpon>FeaturedClasses.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FeaturedClasses.ascx.designer.cs">
+      <DependentUpon>FeaturedClasses.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -187,6 +204,13 @@
     </Compile>
     <Compile Include="Layout.Master.designer.cs">
       <DependentUpon>Layout.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ListClasses.aspx.cs">
+      <DependentUpon>ListClasses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListClasses.aspx.designer.cs">
+      <DependentUpon>ListClasses.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListStudents.aspx.cs">
       <DependentUpon>ListStudents.aspx</DependentUpon>
@@ -202,14 +226,70 @@
     <Compile Include="ListTeachers.aspx.designer.cs">
       <DependentUpon>ListTeachers.aspx</DependentUpon>
     </Compile>
+    <Compile Include="NewClass.aspx.cs">
+      <DependentUpon>NewClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewClass.aspx.designer.cs">
+      <DependentUpon>NewClass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewStudent.aspx.cs">
+      <DependentUpon>NewStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewStudent.aspx.designer.cs">
+      <DependentUpon>NewStudent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NewTeacher.aspx.cs">
+      <DependentUpon>NewTeacher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewTeacher.aspx.designer.cs">
+      <DependentUpon>NewTeacher.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SCHOOLDB.cs" />
+    <Compile Include="ShowClass.aspx.cs">
+      <DependentUpon>ShowClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShowClass.aspx.designer.cs">
+      <DependentUpon>ShowClass.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ShowStudent.aspx.cs">
       <DependentUpon>ShowStudent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ShowStudent.aspx.designer.cs">
       <DependentUpon>ShowStudent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ShowTeacher.aspx.cs">
+      <DependentUpon>ShowTeacher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ShowTeacher.aspx.designer.cs">
+      <DependentUpon>ShowTeacher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateClass.aspx.cs">
+      <DependentUpon>UpdateClass.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateClass.aspx.designer.cs">
+      <DependentUpon>UpdateClass.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateStudent.aspx.cs">
+      <DependentUpon>UpdateStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateStudent.aspx.designer.cs">
+      <DependentUpon>UpdateStudent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateTeacher.aspx.cs">
+      <DependentUpon>UpdateTeacher.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdateTeacher.aspx.designer.cs">
+      <DependentUpon>UpdateTeacher.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

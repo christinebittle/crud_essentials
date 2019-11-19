@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Layout.master.cs" Inherits="HTTP5101_School_System.Layout" %>
-
+<%@ Register Src="~/FeaturedClasses.ascx" TagName="FeaturedClasses" TagPrefix="asp"%>
 <!DOCTYPE html>
 
 <html>
@@ -10,7 +10,13 @@
 <body>
     <header>
         <div class="cwidth">
-            Hello Everyone!
+            <nav>
+                <ul>
+                    <li><a href="ListTeachers.aspx">Teachers</a></li>
+                    <li><a href="ListClasses.aspx">Classes</a></li>
+                    <li><a href="ListStudents.aspx">Students</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
     <div class="cwidth">
@@ -22,6 +28,7 @@
     <footer>
         <div class="cwidth">
              My Ultra Awesome Footer Here
+             <asp:FeaturedClasses runat="server"></asp:FeaturedClasses>
         </div>
     </footer>
 </body>

@@ -10,33 +10,51 @@
 namespace HTTP5101_School_System {
     
     
-    public partial class ListTeachers {
+    public partial class NewClass {
         
         /// <summary>
-        /// teacher_search control.
+        /// class_name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox teacher_search;
+        protected global::System.Web.UI.WebControls.TextBox class_name;
         
         /// <summary>
-        /// sql_debugger control.
+        /// class_code control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl sql_debugger;
+        protected global::System.Web.UI.WebControls.TextBox class_code;
         
         /// <summary>
-        /// teachers_result control.
+        /// start_date control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl teachers_result;
+        protected global::System.Web.UI.WebControls.TextBox start_date;
+        
+        /// <summary>
+        /// finish_date control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox finish_date;
+        
+        /// <summary>
+        /// class_teacherid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList class_teacherid;
     }
 }
