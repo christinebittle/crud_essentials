@@ -13,6 +13,7 @@
         //order by fname lname asc desc
         %>
     </div>
+    <a href="NewStudent.aspx">New Student</a>
     <div class="_table" runat="server">
         <div class="listitem">
             <div class="col4">FIRST NAME</div>

@@ -13,6 +13,7 @@
         //order by fname lname asc desc
         %>
     </div>
+    <a href="NewClass.aspx">Add New</a>
     <div class="_table" runat="server">
         <div class="listitem">
             <div class="col5">Class Code</div>
