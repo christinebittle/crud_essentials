@@ -13,5 +13,27 @@ namespace HTTP5101_School_System
         {
 
         }
+
+        protected void Add_Student(object sender, EventArgs e)
+        {
+            //create connection
+            SCHOOLDB db = new SCHOOLDB();
+
+            //create a new particular student
+            Student new_student = new Student();
+            //set that student data
+            new_student.SetFname(student_fname.Text);
+            new_student.SetLname(student_lname.Text);
+            new_student.SetNumber(student_number.Text);
+            new_student.SetEnrolDate(DateTime.Now);
+
+            //add the student to the database
+            db.AddStudent(new_student);
+
+
+            Response.Redirect("ListStudents.aspx");
+        }
+
+        
     }
 }

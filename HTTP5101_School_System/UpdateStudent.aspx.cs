@@ -11,8 +11,51 @@ namespace HTTP5101_School_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //We only want to show the data when
+            //the user visits the page for the first time
+            //make sure to 
+            if (!Page.IsPostBack) {
+                //this connection instance is for showing data
+                SCHOOLDB db = new SCHOOLDB();
+                ShowStudentInfo(db);
+            }
+        }
+
+        protected void Update_Student(object sender, EventArgs e)
+        {
+
+            //this connection instance is for editing data
             SCHOOLDB db = new SCHOOLDB();
-            ShowStudentInfo(db);
+
+            bool valid = true;
+            string studentid = Request.QueryString["studentid"];
+            if (String.IsNullOrEmpty(studentid)) valid = false;
+            if (valid)
+            {
+                Student new_student = new Student();
+                //set that student data
+                new_student.SetFname(student_fname.Text);
+                new_student.SetLname(student_lname.Text);
+                new_student.SetNumber(student_number.Text);
+
+                //add the student to the database
+                try
+                { 
+                    db.UpdateStudent(Int32.Parse(studentid), new_student);
+                    Response.Redirect("ShowStudent.aspx?studentid="+studentid);
+                }
+                catch
+                {
+                    valid = false;
+                }
+                
+            }
+
+            if (!valid)
+            {
+                student.InnerHtml = "There was an error updating that student.";
+            }
+            
         }
 
         protected void ShowStudentInfo(SCHOOLDB db)
@@ -26,20 +69,11 @@ namespace HTTP5101_School_System
             if (valid)
             {
 
-                Dictionary<String, String> student_record = db.FindStudent(Int32.Parse(studentid));
-
-                if (student_record.Count > 0)
-                {
-                    student_title.InnerHtml = student_record["STUDENTFNAME"] + " " + student_record["STUDENTLNAME"];
-                    student_fname.Text = student_record["STUDENTFNAME"];
-                    student_lname.Text = student_record["STUDENTLNAME"];
-                    student_number.Text = student_record["STUDENTNUMBER"];
-                    
-                }
-                else
-                {
-                    valid = false;
-                }
+                Student student_record = db.FindStudent(Int32.Parse(studentid));
+                student_title.InnerHtml = student_record.GetFname() + " " + student_record.GetLname();
+                student_fname.Text = student_record.GetFname();
+                student_lname.Text = student_record.GetLname();
+                student_number.Text = student_record.GetNumber(); 
             }
 
             if (!valid)

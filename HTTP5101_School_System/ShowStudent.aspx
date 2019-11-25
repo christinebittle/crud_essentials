@@ -7,7 +7,9 @@
     -->
     <div class="viewnav">
         <a class="left" href="ListStudents.aspx">Back To List</a>
+        <ASP:Button OnClientClick="if(!confirm('Are you sure you want to delete this?')) return false;" OnClick="Delete_Student" CssClass="right spaced" Text="Delete" runat="server"/>   
         <a class="right" href="UpdateStudent.aspx?studentid=<%= Request.QueryString["studentid"] %>">Edit</a>
+        
     </div>
     <div id="student" runat="server">
         <h2>Details for <span id="student_title_fname" runat="server"></span></h2>
@@ -33,7 +35,7 @@
         <div class="listitem">
             <div class="col3">Add Student to Class</div>
             <div class="col3"><asp:DropDownList ID="student_classid" runat="server"></asp:DropDownList></div>
-            <div class="col3last"><asp:button runat="server" Text="Enrol"></asp:button></div>
+            <div class="col3last"><asp:button runat="server" OnClick="Enrol_Student" Text="Enrol"></asp:button></div>
         </div>
     </div>
 </asp:Content>

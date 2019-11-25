@@ -19,6 +19,6 @@
             <asp:TextBox runat="server" ID="student_number"></asp:TextBox>
         </div>
 
-        <asp:Button Text="Update Student" runat="server" />
+        <asp:Button Text="Update Student" OnClick="Update_Student" runat="server" />
     </div>
 </asp:Content>

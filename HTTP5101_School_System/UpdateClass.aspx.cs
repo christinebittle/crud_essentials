@@ -12,10 +12,13 @@ namespace HTTP5101_School_System
         protected void Page_Load(object sender, EventArgs e)
         {
             SCHOOLDB db = new SCHOOLDB();
-            //first generate dropdownlist
-            FillTeacherOptions(db);
-            //then populate other data
+            
+            //Populate the data for the interface of the class
             ShowClassInfo(db);
+
+            //Fillteacher options presents a dropdownlist with the current teacher preselected
+            
+
         }
 
         protected void ShowClassInfo(SCHOOLDB db)
@@ -39,6 +42,8 @@ namespace HTTP5101_School_System
                     class_name.Text= class_record["CLASSNAME"];
                     class_start_date.Text = class_record["STARTDATE"];
                     class_finish_date.Text = class_record["FINISHDATE"];
+                    int class_teacherid = Int32.Parse(class_record["TEACHERID"]);
+                    FillTeacherOptions(db,class_teacherid);
                 }
                 else
                 {
@@ -52,7 +57,7 @@ namespace HTTP5101_School_System
             }
         }
 
-        protected void FillTeacherOptions(SCHOOLDB db)
+        protected void FillTeacherOptions(SCHOOLDB db, int class_current_teacherid)
         {
             string query = "select * from teachers";
             List<Dictionary<String, String>> rs = db.List_Query(query);
@@ -62,6 +67,8 @@ namespace HTTP5101_School_System
                 string teacherid = row["TEACHERID"];
                 ListItem teacheroption = new ListItem(teachername, teacherid);
                 class_teacherid.Items.Add(teacheroption);
+                //preselect the teacherid with data we know
+                class_teacherid.SelectedValue = class_current_teacherid.ToString();
             }
         }
     }

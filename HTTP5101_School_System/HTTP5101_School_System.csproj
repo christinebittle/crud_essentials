@@ -179,6 +179,7 @@
     <Content Include="ShowClass.aspx" />
     <Content Include="ShowStudent.aspx" />
     <Content Include="ShowTeacher.aspx" />
+    <Content Include="UnenrolStudent.aspx" />
     <Content Include="UpdateClass.aspx" />
     <Content Include="UpdateStudent.aspx" />
     <Content Include="UpdateTeacher.aspx" />
@@ -269,6 +270,14 @@
     </Compile>
     <Compile Include="ShowTeacher.aspx.designer.cs">
       <DependentUpon>ShowTeacher.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student.cs" />
+    <Compile Include="UnenrolStudent.aspx.cs">
+      <DependentUpon>UnenrolStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UnenrolStudent.aspx.designer.cs">
+      <DependentUpon>UnenrolStudent.aspx</DependentUpon>
     </Compile>
     <Compile Include="UpdateClass.aspx.cs">
       <DependentUpon>UpdateClass.aspx</DependentUpon>

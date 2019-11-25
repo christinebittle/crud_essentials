@@ -42,7 +42,7 @@ namespace HTTP5101_School_System
                         class_students.InnerHtml += "<div class=\"listitem\">";
                         class_students.InnerHtml += "<div class=\"col3\"><a href=\"ShowStudent.aspx?studentid=" + studentid + "\">" + studentname + "</a></div>";
                         class_students.InnerHtml += "<div class=\"col3\">" + studentnumber + "</div>";
-                        class_students.InnerHtml += "<div class=\"col3last\"><a href=\"Delete\">Delete</a></div>";
+                        class_students.InnerHtml += "<div class=\"col3last\"><a href=\"UnenrolStudent.aspx?studentid=" + studentid+"&classid="+classid+"&ref=class\">Delete</a></div>";
                         class_students.InnerHtml += "</div>";
                     }
                 }

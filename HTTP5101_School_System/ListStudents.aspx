@@ -8,7 +8,7 @@
         <asp:Button runat="server" text="submit"/>
         <div id="sql_debugger" runat="server"></div>
         <%
-        //todod: search by keyword
+        //todo: search by keyword
         //search by semester selection(?) -- calendar picker before/after? -- range?
         //order by fname lname asc desc
         %>

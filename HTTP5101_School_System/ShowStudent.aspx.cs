@@ -11,13 +11,47 @@ namespace HTTP5101_School_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var db = new SCHOOLDB();
+            SCHOOLDB db = new SCHOOLDB();
             //showing the base record student information
             ShowStudentInfo(db);
             //showing the classes the student is currently enrolled in
             ListStudentEnrollment(db);
             //populate the dropdownlist for classes for the student to pick
-            FillClassOptions(db);
+            if (!Page.IsPostBack) { 
+                FillClassOptions(db);
+            }
+        }
+
+        protected void Enrol_Student(object sender, EventArgs e)
+        {
+            bool valid = true;
+            int classid = Int32.Parse(student_classid.SelectedValue);
+            string studentid = Request.QueryString["studentid"];
+            if (String.IsNullOrEmpty(studentid)) valid = false;
+
+            SCHOOLDB db = new SCHOOLDB();
+            if (valid)
+            {
+                db.EnrolStudent(Int32.Parse(studentid), classid);
+                Response.Redirect("ShowStudent.aspx?studentid="+studentid);
+            }
+        }
+
+        
+
+        protected void Delete_Student(object sender, EventArgs e)
+        {
+            bool valid = true;
+            string studentid = Request.QueryString["studentid"];
+            if (String.IsNullOrEmpty(studentid)) valid = false;
+
+            SCHOOLDB db = new SCHOOLDB();
+
+            //deleting the student from the system
+            if (valid) { 
+                db.DeleteStudent(Int32.Parse(studentid));
+                Response.Redirect("ListStudents.aspx");
+            }
         }
 
         protected void ListStudentEnrollment(SCHOOLDB db)
@@ -43,7 +77,8 @@ namespace HTTP5101_School_System
                         student_classes.InnerHtml += "<div class=\"col4\"><a href=\"ShowClass.aspx?classid="+classid+"\">"+classcode+"</a></div>";
                         student_classes.InnerHtml += "<div class=\"col4\">"+classname+"</div>";
                         student_classes.InnerHtml += "<div class=\"col4\"><a href=\"ShowTeacher.aspx?teacherid="+teacherid+"\">"+teachername+"</a></div>";
-                        student_classes.InnerHtml += "<div class=\"col4last\"><a href=\"#\">Delete</a></div>";
+                        //building a direct button in here is too convoluted
+                        student_classes.InnerHtml += "<div class=\"col4last\"><a href=\"UnenrolStudent.aspx?studentid="+studentid+"&classid="+classid+ "&ref=student\">Unenrol</a></div>";
                         student_classes.InnerHtml += "</div>";
                     }
                 }
@@ -68,22 +103,21 @@ namespace HTTP5101_School_System
             //We will attempt to get the record we need
             if (valid)
             {
-                
-                Dictionary<String, String> student_record = db.FindStudent(Int32.Parse(studentid));
 
-                if (student_record.Count > 0)
-                {
-                    student_title_fname.InnerHtml = student_record["STUDENTFNAME"] + " " + student_record["STUDENTLNAME"];
-                    student_fname.InnerHtml = student_record["STUDENTFNAME"];
-                    student_lname.InnerHtml = student_record["STUDENTLNAME"];
-                    student_number.InnerHtml = student_record["STUDENTNUMBER"];
-                    enrolment_date.InnerHtml = student_record["ENROLMENTDATE"];
-                }
-                else
-                {
-                    valid = false;
-                }
+                Student student_record = db.FindStudent(Int32.Parse(studentid));
+
+
+                student_title_fname.InnerHtml = student_record.GetFname() + " " + student_record.GetLname();
+                student_fname.InnerHtml = student_record.GetFname();
+                student_lname.InnerHtml = student_record.GetLname();
+                student_number.InnerHtml = student_record.GetNumber();
+                enrolment_date.InnerHtml = student_record.GetEnrolDate().ToString("yyyy-M-dd");
             }
+            else
+            {
+                valid = false;
+            }
+            
 
             if (!valid)
             {

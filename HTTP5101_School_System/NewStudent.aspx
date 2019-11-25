@@ -14,5 +14,5 @@
         <asp:TextBox runat="server" ID="student_number"></asp:TextBox>
     </div>
 
-    <asp:Button Text="Add Student" runat="server" />
+    <asp:Button OnClick="Add_Student" Text="Add Student" runat="server" />
 </asp:Content>

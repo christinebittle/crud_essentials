@@ -49,3 +49,6 @@ Each column should be 17.24% wide with a gutter space of 3.44%
 .viewnav:after{clear:both;}
 .viewnav .left{float:left;}
 .viewnav .right{float:right;}
+
+.spaced {margin-left:20px;}
+.thin {width:100px;margin-top:50px;}
