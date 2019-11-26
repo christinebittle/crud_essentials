@@ -212,27 +212,28 @@ namespace HTTP5101_School_System
             Connect.Close();
         }
 
-        //instead of returning a student, we'll provide a student
+        
         public void UpdateStudent(int studentid, Student new_student)
         {
             //slightly better way of injecting data into strings
-
+            //the below technique is known as string formatting. It allows us to make strings without "" + ""
             string query = "update STUDENTS set STUDENTFNAME='{0}', STUDENTLNAME='{1}', STUDENTNUMBER='{2}' where STUDENTID={3}";
             query = String.Format(query, new_student.GetFname(), new_student.GetLname(), new_student.GetNumber(), studentid);
-
-            //This technique is still sensitive to SQL injection
+            //The above technique is still sensitive to SQL injection
             //we will learn about parameterized queries in the 2nd semester
 
             MySqlConnection Connect = new MySqlConnection(ConnectionString);
             MySqlCommand cmd = new MySqlCommand(query, Connect);
             try
             {
+                //Try to update a student with the information provided to us.
                 Connect.Open();
                 cmd.ExecuteNonQuery();
                 Debug.WriteLine("Executed query "+query);
             }
             catch (Exception ex)
             {
+                //If that doesn't seem to work, check Debug>Windows>Output for the below message
                 Debug.WriteLine("Something went wrong in the UpdateStudent Method!");
                 Debug.WriteLine(ex.ToString());
             }
@@ -257,20 +258,24 @@ namespace HTTP5101_School_System
             removestudent = String.Format(removestudent, studentid);
 
             MySqlConnection Connect = new MySqlConnection(ConnectionString);
-            //two commands
+            //This command removes all the target student's classes from the studentsxclasses table
             MySqlCommand cmd_removeclasses = new MySqlCommand(removeclasses, Connect);
+            //This command removes the particular student from the table
             MySqlCommand cmd_removestudent = new MySqlCommand(removestudent, Connect);
             try
             {
                 //try to execute both commands!
                 Connect.Open();
+                //remember to remove the relational element first
                 cmd_removeclasses.ExecuteNonQuery();
                 Debug.WriteLine("Executed query " + cmd_removeclasses);
+                //then delete the main record
                 cmd_removestudent.ExecuteNonQuery();
                 Debug.WriteLine("Executed query " + cmd_removestudent);
             }
             catch (Exception ex)
             {
+                //if this isn't working as intended, you can check debug>windows>output for the error message.
                 Debug.WriteLine("Something went wrong in the delete Student Method!");
                 Debug.WriteLine(ex.ToString());
             }
@@ -282,15 +287,18 @@ namespace HTTP5101_School_System
         {
             //This function will attempt to insert into the studentsxclasses table
             //should check to see if that student is already enrolled.
+            //if the student is already enrolled, we should do nothing (return)
             string query = "select count(studentxclassid) as 'student_count' from studentsxclasses where studentid = {0} and classid={1}";
             query = String.Format(query, studentid, classid);
 
+            //The actual query which enrols the student into the class
             string enrolling = "insert into STUDENTSXCLASSES (studentid, classid) VALUES ({0},{1})";
             enrolling = String.Format(enrolling, studentid, classid);
 
             MySqlConnection Connect = new MySqlConnection(ConnectionString);
-            //two commands
+            //command for checking if the student is enrolled
             MySqlCommand cmd = new MySqlCommand(query, Connect);
+            //command for enrolling the student
             MySqlCommand enrol_student = new MySqlCommand(enrolling, Connect);
             int studentcount = 0;
             try
@@ -301,7 +309,7 @@ namespace HTTP5101_School_System
                 //we are only selecting one column ( the count of students in a class )
                 while (resultset.Read())
                 {
-                    studentcount = Int32.Parse(resultset.GetString(0));
+                    studentcount = Int32.Parse(resultset.GetString(0)); //0th column is the count
                 }
                 resultset.Close();
                 if (studentcount > 0) return; //exit out of the function if that student is enrolled
@@ -322,18 +330,22 @@ namespace HTTP5101_School_System
 
         public void UnenrolStudent(int studentid, int classid)
         {
+            //The unenrol student doesn't need to be as careful
+            //we can indiscriminately remove any instance of a student belonging to a particular class
             string query = "delete from studentsxclasses where studentid = {0} and classid = {1}";
             query = String.Format(query, studentid, classid);
             MySqlConnection Connect = new MySqlConnection(ConnectionString);
             MySqlCommand cmd = new MySqlCommand(query, Connect);
             try
             {
+                //try to remove the student from the class
                 Connect.Open();
                 cmd.ExecuteNonQuery();
             }
             catch(Exception ex)
             {
                 //If something (anything) goes wrong with the try{} block, this block will execute
+                //Check debug>windows>output 
                 Debug.WriteLine("Something went wrong in the Unenrol Student method!");
                 Debug.WriteLine(ex.ToString());
             }
