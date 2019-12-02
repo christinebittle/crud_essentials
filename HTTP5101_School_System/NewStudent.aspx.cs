@@ -17,7 +17,7 @@ namespace HTTP5101_School_System
         protected void Add_Student(object sender, EventArgs e)
         {
             //create connection
-            SCHOOLDB db = new SCHOOLDB();
+            StudentController db = new StudentController();
 
             //create a new particular student
             Student new_student = new Student();

@@ -11,17 +11,17 @@ namespace HTTP5101_School_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SCHOOLDB db = new SCHOOLDB();
+            CourseController controller = new CourseController();
             
             //Populate the data for the interface of the class
-            ShowClassInfo(db);
+            ShowClassInfo(controller);
 
             //Fillteacher options presents a dropdownlist with the current teacher preselected
             
 
         }
 
-        protected void ShowClassInfo(SCHOOLDB db)
+        protected void ShowClassInfo(CourseController controller)
         {
 
             bool valid = true;
@@ -32,7 +32,7 @@ namespace HTTP5101_School_System
             if (valid)
             {
 
-                Dictionary<String, String> class_record = db.FindClass(Int32.Parse(classid));
+                Dictionary<String, String> class_record = controller.FindClass(Int32.Parse(classid));
 
                 if (class_record.Count > 0)
                 {
@@ -43,7 +43,7 @@ namespace HTTP5101_School_System
                     class_start_date.Text = class_record["STARTDATE"];
                     class_finish_date.Text = class_record["FINISHDATE"];
                     int class_teacherid = Int32.Parse(class_record["TEACHERID"]);
-                    FillTeacherOptions(db,class_teacherid);
+                    FillTeacherOptions(controller, class_teacherid);
                 }
                 else
                 {
@@ -57,10 +57,10 @@ namespace HTTP5101_School_System
             }
         }
 
-        protected void FillTeacherOptions(SCHOOLDB db, int class_current_teacherid)
+        protected void FillTeacherOptions(CourseController controller, int class_current_teacherid)
         {
             string query = "select * from teachers";
-            List<Dictionary<String, String>> rs = db.List_Query(query);
+            List<Dictionary<String, String>> rs = controller.List_Query(query);
             foreach (Dictionary<String, String> row in rs)
             {
                 string teachername = row["TEACHERFNAME"] + " " + row["TEACHERLNAME"];

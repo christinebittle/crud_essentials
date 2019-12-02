@@ -189,6 +189,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CourseController.cs" />
     <Compile Include="FeaturedClasses.ascx.cs">
       <DependentUpon>FeaturedClasses.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -272,6 +273,8 @@
       <DependentUpon>ShowTeacher.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student.cs" />
+    <Compile Include="StudentController.cs" />
+    <Compile Include="TeacherController.cs" />
     <Compile Include="UnenrolStudent.aspx.cs">
       <DependentUpon>UnenrolStudent.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

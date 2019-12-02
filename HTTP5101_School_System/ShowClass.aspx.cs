@@ -11,16 +11,16 @@ namespace HTTP5101_School_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SCHOOLDB db = new SCHOOLDB();
+            CourseController controller = new CourseController();
             //this code puts the information about the class onto the page
-            ShowClassInfo(db);
+            ShowClassInfo(controller);
             //this code prints every student inside this class
-            ListClassEnrollment(db);
+            ListClassEnrollment(controller);
             //we could pick the student to go into the class..
             //makes more sense to pick the class for the student (in ShowStudent.aspx.cs)
         }
 
-        protected void ListClassEnrollment(SCHOOLDB db)
+        protected void ListClassEnrollment(CourseController controller)
         {
             //validation algorithm for student enrollment
             //want to make sure that the student id is valid
@@ -31,7 +31,7 @@ namespace HTTP5101_School_System
             if (valid)
             {
                 string query = "select STUDENTS.* from STUDENTSXCLASSES INNER JOIN STUDENTS ON STUDENTSXCLASSES.STUDENTID = STUDENTS.STUDENTID WHERE STUDENTSXCLASSES.CLASSID=" + classid;
-                List<Dictionary<String, String>> Class_Students = db.List_Query(query);
+                List<Dictionary<String, String>> Class_Students = controller.List_Query(query);
                 if (Class_Students.Count > 0)
                 {
                     foreach (Dictionary<String, String> Class_Student in Class_Students)
@@ -57,7 +57,7 @@ namespace HTTP5101_School_System
             }
         }
 
-        protected void ShowClassInfo(SCHOOLDB db)
+        protected void ShowClassInfo(CourseController controller)
         {
 
             bool valid = true;
@@ -68,7 +68,7 @@ namespace HTTP5101_School_System
             if (valid)
             {
 
-                Dictionary<String, String> class_record = db.FindClass(Int32.Parse(classid));
+                Dictionary<String, String> class_record = controller.FindClass(Int32.Parse(classid));
 
                 if (class_record.Count > 0)
                 {

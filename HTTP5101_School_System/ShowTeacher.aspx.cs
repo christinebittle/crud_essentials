@@ -11,12 +11,12 @@ namespace HTTP5101_School_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SCHOOLDB db = new SCHOOLDB();
-            ShowTeacherInfo(db);
-            ListTeacherClasses(db);
+            TeacherController controller = new TeacherController();
+            ShowTeacherInfo(controller);
+            ListTeacherClasses(controller);
         }
 
-        protected void ListTeacherClasses(SCHOOLDB db)
+        protected void ListTeacherClasses(TeacherController controller)
         {
             //validation algorithm for student enrollment
             //want to make sure that the student id is valid
@@ -27,7 +27,7 @@ namespace HTTP5101_School_System
             if (valid)
             {
                 string query = "select CLASSES.classid, classcode, classname from CLASSES WHERE classes.teacherid =" + teacherid;
-                List<Dictionary<String, String>> Teacher_Classes = db.List_Query(query);
+                List<Dictionary<String, String>> Teacher_Classes = controller.List_Query(query);
                 if (Teacher_Classes.Count > 0)
                 {
                     foreach (Dictionary<String, String> Teacher_Class in Teacher_Classes)
@@ -53,7 +53,7 @@ namespace HTTP5101_School_System
             }
         }
 
-        protected void ShowTeacherInfo(SCHOOLDB db)
+        protected void ShowTeacherInfo(TeacherController controller)
         {
 
             bool valid = true;
@@ -64,7 +64,7 @@ namespace HTTP5101_School_System
             if (valid)
             {
 
-                Dictionary<String, String> teacher_record = db.FindTeacher(Int32.Parse(teacherid));
+                Dictionary<String, String> teacher_record = controller.FindTeacher(Int32.Parse(teacherid));
 
                 if (teacher_record.Count > 0)
                 {

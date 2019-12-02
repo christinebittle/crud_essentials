@@ -16,8 +16,8 @@ namespace HTTP5101_School_System
             //make sure to 
             if (!Page.IsPostBack) {
                 //this connection instance is for showing data
-                SCHOOLDB db = new SCHOOLDB();
-                ShowStudentInfo(db);
+                StudentController controller = new StudentController();
+                ShowStudentInfo(controller);
             }
         }
 
@@ -25,7 +25,7 @@ namespace HTTP5101_School_System
         {
 
             //this connection instance is for editing data
-            SCHOOLDB db = new SCHOOLDB();
+            StudentController controller = new StudentController();
 
             bool valid = true;
             string studentid = Request.QueryString["studentid"];
@@ -40,8 +40,8 @@ namespace HTTP5101_School_System
 
                 //add the student to the database
                 try
-                { 
-                    db.UpdateStudent(Int32.Parse(studentid), new_student);
+                {
+                    controller.UpdateStudent(Int32.Parse(studentid), new_student);
                     Response.Redirect("ShowStudent.aspx?studentid="+studentid);
                 }
                 catch
@@ -58,7 +58,7 @@ namespace HTTP5101_School_System
             
         }
 
-        protected void ShowStudentInfo(SCHOOLDB db)
+        protected void ShowStudentInfo(StudentController controller)
         {
 
             bool valid = true;
@@ -69,7 +69,7 @@ namespace HTTP5101_School_System
             if (valid)
             {
 
-                Student student_record = db.FindStudent(Int32.Parse(studentid));
+                Student student_record = controller.FindStudent(Int32.Parse(studentid));
                 student_title.InnerHtml = student_record.GetFname() + " " + student_record.GetLname();
                 student_fname.Text = student_record.GetFname();
                 student_lname.Text = student_record.GetLname();

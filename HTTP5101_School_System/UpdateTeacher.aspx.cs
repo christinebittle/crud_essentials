@@ -11,11 +11,11 @@ namespace HTTP5101_School_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            SCHOOLDB db = new SCHOOLDB();
-            ShowTeacherInfo(db);
+            TeacherController controller = new TeacherController();
+            ShowTeacherInfo(controller);
         }
 
-        protected void ShowTeacherInfo(SCHOOLDB db)
+        protected void ShowTeacherInfo(TeacherController controller)
         {
 
             bool valid = true;
@@ -26,7 +26,7 @@ namespace HTTP5101_School_System
             if (valid)
             {
 
-                Dictionary<String, String> teacher_record = db.FindTeacher(Int32.Parse(teacherid));
+                Dictionary<String, String> teacher_record = controller.FindTeacher(Int32.Parse(teacherid));
 
                 if (teacher_record.Count > 0)
                 {
