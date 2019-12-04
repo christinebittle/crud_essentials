@@ -5,6 +5,6 @@ but rather a snippet of code which can be used anywhere
 It has a codebehind property which makes it very similar to a web form (.ascx.cs)
 -->
 <h3>Featured Classes</h3>
-<ul id="featured_classes" runat="server">
+<div class="featurebox" id="featured_classes" runat="server">
 
-</ul>
+</div>

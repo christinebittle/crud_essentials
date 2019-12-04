@@ -81,7 +81,12 @@ namespace HTTP5101_School_System
                     //for every column in the row
                     for(int i = 0; i < resultset.FieldCount; i++)
                     {
-                        Row.Add(resultset.GetName(i), resultset.GetString(i));
+                        string value = "";
+                        if (!resultset.IsDBNull(i))
+                        {
+                            value = value = resultset.GetString(i);
+                        }
+                        Row.Add(resultset.GetName(i), value);
                         
                     }
                     

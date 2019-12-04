@@ -23,7 +23,7 @@ namespace HTTP5101_School_System
 
             foreach(Dictionary<String,String> row in rs)
             {
-                featured_classes.InnerHtml += row["CLASSCODE"] + " " + row["popularity"]+"<br>";
+                featured_classes.InnerHtml += "<div class=\"featuretile\"><div class=\"tile\"><div class=\"tileheader\">"+row["CLASSCODE"]+"</div>"+"popularity:"+row["popularity"]+"</div></div>";
 
 
             }

@@ -44,9 +44,16 @@ namespace HTTP5101_School_System
                     //Look at each column in the result set row, add both the column name and the column value to our Student dictionary
                     for (int i = 0; i < resultset.FieldCount; i++)
                     {
+                        string value = "";
                         Debug.WriteLine("Attempting to transfer data of " + resultset.GetName(i));
-                        Debug.WriteLine("Attempting to transfer data of " + resultset.GetString(i));
-                        Teacher.Add(resultset.GetName(i), resultset.GetString(i));
+                        if (!resultset.IsDBNull(i))
+                        {
+
+                            Debug.WriteLine("Attempting to transfer data of " + resultset.GetString(i));
+                            value = resultset.GetString(i);
+
+                        }
+                        Teacher.Add(resultset.GetName(i), value);
 
                     }
                     //Add the teacher to the list of teachers

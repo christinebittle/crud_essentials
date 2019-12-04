@@ -63,7 +63,7 @@ namespace HTTP5101_School_System
             if (String.IsNullOrEmpty(studentid)) valid = false;
             student_classes.InnerHtml = ""; //reset this
             if (valid) {
-                string query = "select CLASSES.classid, TEACHERS.teacherid, classcode, classname, concat(teacherfname, ' ', teacherlname) as 'teachername' from STUDENTSXCLASSES INNER JOIN CLASSES ON STUDENTSXCLASSES.CLASSID = CLASSES.CLASSID left join TEACHERS on TEACHERS.teacherid = classes.teacherid WHERE STUDENTSXCLASSES.STUDENTID=" + studentid;
+                string query = "select CLASSES.classid, TEACHERS.teacherid, classcode, classname, concat(IFNULL(teacherfname, 'NO TEACHER'), ' ', IFNULL(teacherlname,'')) as 'teachername' from STUDENTSXCLASSES INNER JOIN CLASSES ON STUDENTSXCLASSES.CLASSID = CLASSES.CLASSID left join TEACHERS on TEACHERS.teacherid = classes.teacherid WHERE STUDENTSXCLASSES.STUDENTID=" + studentid;
                 List<Dictionary<String, String>> Student_Classes = controller.List_Query(query);
                 if (Student_Classes.Count > 0) { 
                     foreach (Dictionary<String,String> Student_Class in Student_Classes)

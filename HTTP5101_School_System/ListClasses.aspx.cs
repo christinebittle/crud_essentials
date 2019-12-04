@@ -18,7 +18,7 @@ namespace HTTP5101_School_System
         protected void ListClassesInfo(SCHOOLDB db)
         {
             classes_result.InnerHtml = "";
-            string query = "select CLASSES.*, concat (TEACHERFNAME, ' ', TEACHERLNAME) as 'TEACHERNAME' from CLASSES inner join TEACHERS on TEACHERS.teacherid = CLASSES.teacherid";
+            string query = "select CLASSES.*, IFNULL(concat(TEACHERFNAME, ' ', TEACHERLNAME), 'no teacher') as 'TEACHERNAME' from CLASSES LEFT join TEACHERS on TEACHERS.teacherid = CLASSES.teacherid";
             string searchkey = class_search.Text;
             if (searchkey != "")
             {

@@ -45,6 +45,7 @@ namespace HTTP5101_School_System
                     for (int i = 0; i < resultset.FieldCount; i++)
                     {
                         string key = resultset.GetName(i);
+                        if (resultset.IsDBNull(i)) continue;
                         string value = resultset.GetString(i);
                         Debug.WriteLine("Attempting to transfer " + key + " data of " + value);
                         //can't just generically put data into a dictionary anymore

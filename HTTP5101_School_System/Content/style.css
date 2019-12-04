@@ -52,3 +52,13 @@ Each column should be 17.24% wide with a gutter space of 3.44%
 
 .spaced {margin-left:20px;}
 .thin {width:100px;margin-top:50px;}
+
+
+/*featured classes*/
+
+.featurebox{overflow:hidden; background:#fefefe;}
+.featuretile {width:23%; margin-left:1%; margin-right:1%; float:left;}
+
+
+.tile {padding:20px; min-height:110px;}
+.tileheader {font-size:25px; text-align:center; text-transform:uppercase;}

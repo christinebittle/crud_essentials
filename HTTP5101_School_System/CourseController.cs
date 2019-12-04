@@ -26,7 +26,7 @@ namespace HTTP5101_School_System
             try
             {
                 //Build a custom query with the id information provided
-                string query = "select CLASSES.*, CONCAT(TEACHERFNAME,' ',TEACHERLNAME) as 'TEACHERNAME' from CLASSES left join TEACHERS on TEACHERS.teacherid = CLASSES.teacherid where classid = " + id.ToString();
+                string query = "select CLASSES.*, CONCAT(IFNULL(TEACHERFNAME,'no teacher'),' ',IFNULL(TEACHERLNAME,'')) as 'TEACHERNAME' from CLASSES left join TEACHERS on TEACHERS.teacherid = CLASSES.teacherid where classid = " + id.ToString();
                 Debug.WriteLine("Connection Initialized...");
                 //open the db connection
                 Connect.Open();
@@ -47,10 +47,17 @@ namespace HTTP5101_School_System
                     //Look at each column in the result set row, add both the column name and the column value to our Student dictionary
                     for (int i = 0; i < resultset.FieldCount; i++)
                     {
+                        string value = "";
                         Debug.WriteLine("Attempting to transfer data of " + resultset.GetName(i));
-                        Debug.WriteLine("Attempting to transfer data of " + resultset.GetString(i));
-                        Course.Add(resultset.GetName(i), resultset.GetString(i));
+                        //patch for nullable columns (such as teacherid)
+                        if (!resultset.IsDBNull(i))
+                        {
 
+                            Debug.WriteLine("Attempting to transfer data of " + resultset.GetString(i));
+                            value = resultset.GetString(i);
+                            
+                        }
+                        Course.Add(resultset.GetName(i), value);
                     }
                     //Add the student to the list of courses
                     Courses.Add(Course);
